@@ -1,0 +1,8 @@
+{
+  "name": "Al-Aqrab S.S.S",
+  "description": "An integrated educational management system for schools, centers, and private teachers featuring an AI-powered smart tutor, financial management, and multi-role dashboards.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
