@@ -48,6 +48,10 @@ const translations: Record<string, Record<Language, string>> = {
   search_placeholder: { ar: 'البحث السريع...', en: 'Quick Search...' },
   pending_approvals: { ar: 'طلبات بانتظار الموافقة', en: 'Pending Approvals' },
   create_user: { ar: 'إضافة مستخدم جديد', en: 'Add New User' },
+  smart_exam_btn: { ar: 'منشئ الاختبارات الذكي AI', en: 'AI Smart Exam Gen' },
+  exam_prompt_label: { ar: 'صف فكرة الاختبار للذكاء الاصطناعي...', en: 'Describe the exam idea to AI...' },
+  generate_btn: { ar: 'توليد الاختبار الآن', en: 'Generate Exam Now' },
+  ai_generating: { ar: 'جاري بناء الاختبار بذكاء العقرب...', en: 'Constructing exam with AI...' },
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);

@@ -4,7 +4,7 @@ import { UserRole } from '../types';
 import { useAppContext } from '../context/AppContext';
 import { 
   LayoutDashboard, Users, Wallet, Settings, LogOut, Menu, X,
-  MessageSquare, Sun, Moon, Zap, Activity, Trophy, Megaphone, BrainCircuit, Bell, ShieldCheck, GraduationCap, ClipboardCheck
+  MessageSquare, Sun, Moon, Zap, Activity, Trophy, Megaphone, BrainCircuit, Bell, ShieldCheck, GraduationCap, ClipboardCheck, Wand2
 } from 'lucide-react';
 import SmartTutor from './SmartTutor';
 import AdminView from './views/AdminView';
@@ -44,6 +44,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ role, onLogout }) => 
       items.push({ id: 'manage_students', label: t('active_students'), icon: <GraduationCap size={18} /> });
       items.push({ id: 'finance', label: t('monthly_revenue'), icon: <Wallet size={18} /> });
     } else if (role === UserRole.TEACHER) {
+      items.push({ id: 'generate_exam', label: t('smart_exam_btn'), icon: <Wand2 size={18} /> });
       items.push({ id: 'manage_students', label: t('active_students'), icon: <GraduationCap size={18} /> });
       items.push({ id: 'exams', label: t('exam_module'), icon: <Trophy size={18} /> });
     } else if (role === UserRole.STUDENT) {
@@ -68,6 +69,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ role, onLogout }) => 
     if (activeTab === 'tutor') return <SmartTutor />;
     if (activeTab === 'analyst') return <SmartAnalytic role={role} dataContext="كافة الأنظمة تعمل بوضع التشغيل الآمن." />;
     if (activeTab === 'exams') return <ExamsModule mode={role === UserRole.TEACHER ? 'create' : 'take'} onFinished={() => setActiveTab('overview')} />;
+    if (activeTab === 'generate_exam') return <ExamsModule mode="generate" onFinished={() => setActiveTab('overview')} />;
     if (activeTab === 'announcements') return <AnnouncementsModule currentUserRole={role} />;
     if (activeTab === 'approvals') return <ManagementModule mode="approvals" />;
     if (activeTab === 'manage_teachers') return <ManagementModule mode="users" roleFilter={UserRole.TEACHER} />;
@@ -87,7 +89,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ role, onLogout }) => 
     <div className={`flex h-screen overflow-hidden ${theme === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-950'}`}>
       {isSidebarOpen && <div className="fixed inset-0 bg-black/40 z-[40] md:hidden backdrop-blur-sm" onClick={() => setIsSidebarOpen(false)}></div>}
 
-      <aside className={`fixed inset-y-0 ${isRtl ? 'right-0' : 'left-0'} z-50 w-64 glass-sidebar md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : (isRtl ? 'translate-x-full' : '-translate-x-full')} md:static transition-transform duration-300 ease-in-out border-l dark:border-white/5`}>
+      <aside className={`fixed inset-y-0 ${isRtl ? 'right-0' : 'left-0'} z-50 w-64 glass-sidebar md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : (isRtl ? 'translate-x-full' : '-translate-x-full')} md:static transition-transform duration-300 ease-in-out border-l dark:border-white/5 shadow-2xl bg-white dark:bg-slate-950`}>
         <div className="flex items-center justify-between p-6 border-b dark:border-white/5">
           <div className="flex items-center gap-2">
             <Zap className="text-amber-500 fill-amber-500" size={20} />
